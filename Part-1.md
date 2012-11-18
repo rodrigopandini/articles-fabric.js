@@ -1,7 +1,7 @@
 Introdução à Fabric.js: Parte 1
 ==================
 
-**[Juriy Zaytsev](http://msdn.microsoft.com/en-us/magazine/jj714178.aspx) | October 14, 2012**
+**[Juriy Zaytsev](http://msdn.microsoft.com/en-us/magazine/jj714178.aspx#author) | October 14, 2012**
 
 **Tradução (pt_BR): [Rodrigo Pandini](http://twitter.com/rodrigopandini) | 18 Novembro, 2012**
 
@@ -416,11 +416,13 @@ Enquanto isso, sinta-se livre para olhar os [demos comentados](http://fabricjs.c
 
 Diverta-se experimentando Fabric! Espero que você curta o passeio.
 
-#### About the Author
+
+
+#### Sobre o autor
 
 <img src="https://raw.github.com/rodrigopandini/articles-fabric.js/master/assets/img/author.png">
 
-Juriy Zaytsev is a passionate JavaScript developer living in New York. He is an ex-Prototype.js core member, blogger at [perfectionkills.com](http://perfectionkills.com/), and the creator of [Fabric.js](http://fabricjs.com) canvas library. Currently Juriy works on his [Printio.ru](http://printio.ru) startup and making Fabric even more fun to use.
+Juriy Zaytsev é um apaixonado desenvolvedor JavaScript morando em New York. Ele é ex membro do núcleo Prototype.js, blogueiro em [perfectionkills.com](http://perfectionkills.com/), e criador da biblioteca para canvas [Fabric.js](http://fabricjs.com) canvas library. No momento, Juriy trabalha em sua startup [Printio.ru](http://printio.ru) e faz a Fabric ainda mais divertida para se usar.
 
 ***Find Juriy on:***
 - Twitter - [@kangax](http://twitter.com/kangax/)
