@@ -1,7 +1,7 @@
 Introdução à Fabric.js: Parte 1
 ==================
 
-**[Juriy Zaytsev](http://msdn.microsoft.com/en-us/magazine/jj714178.aspx#author) | October 14, 2012**
+**[Juriy Zaytsev](https://github.com/rodrigopandini/articles-fabric.js/blob/master/Part-1.md#sobre-o-autor) | October 14, 2012**
 
 **Tradução (pt_BR): [Rodrigo Pandini](http://twitter.com/rodrigopandini) | 18 Novembro, 2012**
 
