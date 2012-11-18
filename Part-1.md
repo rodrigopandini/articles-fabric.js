@@ -417,14 +417,11 @@ Enquanto isso, sinta-se livre para olhar os [demos comentados](http://fabricjs.c
 Diverta-se experimentando Fabric! Espero que você curta o passeio.
 
 
-
-
-
 #### Sobre o autor
 
 <img src="https://raw.github.com/rodrigopandini/articles-fabric.js/master/assets/img/author.png">
 
-Juriy Zaytsev é um apaixonado desenvolvedor JavaScript morando em New York. Ele é ex membro do núcleo Prototype.js, blogueiro em [perfectionkills.com](http://perfectionkills.com/), e criador da biblioteca para canvas [Fabric.js](http://fabricjs.com) canvas library. No momento, Juriy trabalha em sua startup [Printio.ru](http://printio.ru) e faz a Fabric ainda mais divertida para se usar.
+Juriy Zaytsev é um apaixonado desenvolvedor JavaScript morando em New York. Ele é ex membro do núcleo Prototype.js, blogueiro em [perfectionkills.com](http://perfectionkills.com/), e criador da biblioteca para canvas [Fabric.js](http://fabricjs.com). No momento, Juriy trabalha em sua startup [Printio.ru](http://printio.ru) e faz a Fabric ainda mais divertida para se usar.
 
 ***Find Juriy on:***
 - Twitter - [@kangax](http://twitter.com/kangax/)
