@@ -140,7 +140,7 @@ var triangle = new fabric.Triangle({
 canvas.add(circle, triangle);
 ```
 
-Você faz a mesma coisa com qualquer outra forma básica. A Figura 4 mostra um exemplo de um círculo verde desenhado na localização 100,100 e um triângulo azul em 50,50.
+Você faz a mesma coisa com qualquer outra forma básica. A ***Figura 4*** mostra um exemplo de um círculo verde desenhado na localização 100,100 e um triângulo azul em 50,50.
 
 <img src="https://raw.github.com/rodrigopandini/articles-fabric.js/master/assets/img/img04.png">
 
