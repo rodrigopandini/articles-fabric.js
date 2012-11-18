@@ -45,7 +45,7 @@ var rect = new fabric.Rect({
 // "add" rectangle onto canvas
 canvas.add(rect);
 ```
-<img src="assets/img/img01.png">
+<img src="https://raw.github.com/rodrigopandini/articles-fabric.js/master/assets/img/img01.png">
 
 ***Figura 1: Retângulo vermelho desenhado com Fabric ou Métodos Nativos do Canvas***
 
@@ -76,7 +76,7 @@ var rect = new fabric.Rect({
 });
 canvas.add(rect);
 ```
-<img src="assets/img/img02.png">
+<img src="https://raw.github.com/rodrigopandini/articles-fabric.js/master/assets/img/img02.png">
 
 ***Figura 2: Retângulo vermelho desenhado com Fabric ou Métodos Nativos do Canvas***
 
@@ -110,7 +110,7 @@ rect.set({ left: 20, top: 50 });
 canvas.renderAll();
 ```
 
-<img src="assets/img/img03.png">
+<img src="https://raw.github.com/rodrigopandini/articles-fabric.js/master/assets/img/img03.png">
 
 ***Figura 3: Retângulo vermelho desenhado em uma nova localização***
 
@@ -142,7 +142,7 @@ canvas.add(circle, triangle);
 
 Você faz a mesma coisa com qualquer outra forma básica. A Figura 4 mostra um exemplo de um círculo verde desenhado na localização 100,100 e um triângulo azul em 50,50.
 
-<img src="assets/img/img04.png">
+<img src="https://raw.github.com/rodrigopandini/articles-fabric.js/master/assets/img/img04.png">
 
 ***Figura 4: Um triângulo azul e um círculo verde desenhados com Fabric***
 
@@ -165,7 +165,7 @@ rect.set({ strokeWidth: 5, stroke: 'rgba(100,200,200,0.5)' });
 rect.set('angle', 15).set('flipY', true);
 ```
 
-<img src="assets/img/img05.png">
+<img src="https://raw.github.com/rodrigopandini/articles-fabric.js/master/assets/img/img05.png">
 
 ***Figure 5 Red, Rotated, Stroked Rectangle Drawn with Fabric***
 
@@ -201,7 +201,7 @@ rect.getOpacity(); // 1
 
 Este retângulo tem as propriedades definidas como padrão. Ele é posicionado em 0,0, é preto, totalmente opaco, não tem contorno e nem dimensões (largura e altura são 0). Pelo fato de não ter dimensões, você não pode vê-lo no canvas. Dando a ele qualquer valor positivo para a largura e altura irá revelar um retângulo preto no canto superior esquerdo do canvas, como mostrado na ***Figura 6***.
 
-<img src="assets/img/img06.png">
+<img src="https://raw.github.com/rodrigopandini/articles-fabric.js/master/assets/img/img06.png">
 
 ***Figura 6: Como um retângulo padrão se parece quando definido suas dimensões***
 
@@ -261,11 +261,11 @@ canvas.onFpsUpdate = function(){ /* ... */ };
 
 Um dos componentes únicos contruídos para a Fabric é a camada de interatividade em cima do modelo de objetos. O modelo de objetos existe para permitir programaticamente acessar e manipular os objetos no canvas, mas do lado de fora - ao nível do usuário - há uma forma de manipular estes objetos via mouse (ou via toque nos dispositivos de toque). Assim que você inicializa um canvas pela chamada de fabric.Canvas(‘...’), é possível selecionar os objetos (ver ***Figura 7***), arrastá-los, redimensioná-los ou rotacioná-los e até mesmo agrupá-los (ver ***Figura 8***) para manipulá-los como um todo de uma vez!
 
-<img src="assets/img/img07.png">
+<img src="https://raw.github.com/rodrigopandini/articles-fabric.js/master/assets/img/img07.png">
 
 ***Figura 7: Retângulo vermelho rotacionado no estado de selecionado (controles visíveis)***
 
-<img src="assets/img/img08.png">
+<img src="https://raw.github.com/rodrigopandini/articles-fabric.js/master/assets/img/img08.png">
 
 ***Figura 8: Retângulo e Círculo agrupados (controles visíveis)***
 
@@ -324,7 +324,7 @@ canvas.add(imgInstance);
 
 Note que você passa um elemento imagem para o construtor fabric.Image. Isso cria uma instância de fabric.Image que se parece como a imagem do document. Além disso, você imediatamente define os valores left/top para 100/100, angle para 30 e opacity para 0.85. Uma vez que a imagem é adicionada ao canvas, ela é renderizada no localização 100,100 com o ângulo de 30 graus e é levemente transparente (ver Figura 9). Nada mal!
 
-<img src="assets/img/img09.png">
+<img src="https://raw.github.com/rodrigopandini/articles-fabric.js/master/assets/img/img09.png">
 
 ***Figura 9: Imagem levemente transparente e rotacionada, renderizada com Fabric***
 
@@ -361,7 +361,8 @@ path.set({ left: 120, top: 120 });
 canvas.add(path);
 ```
 
-<img src="assets/img/img10.png">
+<img src="https://raw.github.com/rodrigopandini/articles-fabric.js/master/assets/img/img10.png">
+
 ***Figura 10: Path simples renderizado pelo Fabric***
 
 Aqui você instanciou o objeto fabric.Path e passou para ele a string com as instruções do caminho. Isso pode parecer estranho, mas na verdade é fácil de entender. M representa o comando de mover e diz para a caneta invisível para se mover para o ponto 0, 0. L é para linha e faz a caneta desenhar um linha até o ponto 200, 100. Então outro L cria a linha até 170, 200. Por último, z força a caneta a fechar o desenho do caminho corrente e finalizar a forma.
@@ -375,7 +376,7 @@ var path = new fabric.Path('M 0 0 L 300 100 L 200 300 z');
 path.set({ fill: 'red', stroke: 'green', opacity: 0.5 });
 canvas.add(path);
 ```
-<img src="assets/img/img11.png">
+<img src="https://raw.github.com/rodrigopandini/articles-fabric.js/master/assets/img/img11.png">
 
 ***Figura 11: Uma Path simples modificada***
 
@@ -395,7 +396,7 @@ canvas.add(path.set({ left: 100, top: 200 }));
 
 Aqui, M ainda representa o comando mover, então a caneta inicia sua jornada de desenhar no ponto 121.32, 0. Em seguida, há um comando L (line) que traz a caneta para 44.58, 0. Até aqui tudo bem. Agora vem o comando C, que significa “cubic bezier”. Este comando faz a caneta desenhar uma curva bezier a partir do ponto corrente até 36.67, 0. Ele usa o ponto 29.5, 3.22 como ponto de controle de começo da linha e 24.31, 8.41 como ponto de controle de fim de linha. Toda esta operação é seguida por uma dezena de outros comandos, que finalmente cria a agradável forma de uma seta, como mostrado na ***Figura 12***.
 
-<img src="assets/img/img12.png">
+<img src="https://raw.github.com/rodrigopandini/articles-fabric.js/master/assets/img/img12.png">
 
 ***Figura 12: Path complexa renderizada com Fabric***
 
@@ -417,7 +418,7 @@ Diverta-se experimentando Fabric! Espero que você curta o passeio.
 
 #### About the Author
 
-<img src="assets/img/author.png">
+<img src="https://raw.github.com/rodrigopandini/articles-fabric.js/master/assets/img/author.png">
 
 Juriy Zaytsev is a passionate JavaScript developer living in New York. He is an ex-Prototype.js core member, blogger at [perfectionkills.com](http://perfectionkills.com/), and the creator of [Fabric.js](http://fabricjs.com) canvas library. Currently Juriy works on his [Printio.ru](http://printio.ru) startup and making Fabric even more fun to use.
 
