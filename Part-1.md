@@ -154,7 +154,7 @@ Fabric cuida da renderização do canvas e do gerenciamento do estado por você. Nó
 
 Como era de se esperar, objetos Fabric tem propriedades relacionadas a posição (left, top), dimensões (width, height), renderização (preenchimento, opacidade, contorno, espessura do contorno), redimensionamento e rotação (scaleX, scaleY, angle) e inversão (flipX, flipY). Sim, criar objetos invertidos no Fabric é fácil como definir a propriedade flip* para true.
 
-Você pode ler qualquer uma dessas propriedades via o método get e definí-las via set. Aqui está um exemplo de como mudar algumas propriedades do retângulo vermelho. ***Figura 5*** mostra os resultados.
+Você pode ler qualquer uma dessas propriedades via o método get e definí-las via set. Aqui está um exemplo de como mudar algumas propriedades do retângulo vermelho. A ***Figura 5*** mostra os resultados.
 
 ```javascript
 var canvas = new fabric.Canvas('c');
@@ -167,11 +167,11 @@ rect.set('angle', 15).set('flipY', true);
 
 <img src="https://raw.github.com/rodrigopandini/articles-fabric.js/master/assets/img/img05.png">
 
-***Figure 5 Red, Rotated, Stroked Rectangle Drawn with Fabric***
+***Figure 5: Retângulo vermelho com bordas e rotacionado desenhado com Fabric***
 
 Primeiro, o valor do preenchimento é definido para “red”. A próxima atribuição define os valores da espessura e da cor de contorno, dando ao retângulo 5px de espessura e uma cor verde pálida para ela. Finalmente, o código muda as propriedades ângulo e inversão em Y. Note como cada uma das três atribuições usa uma sintaxe um pouco diferente.
 
-Isso demonstra que o set é um método universal. Você provavelmente vai usá-lo muitas vezes, e está destinado a ser o mais conveniente possível. E sobre os getters? Há um método get genérico e também um número de gets específicos. Para ler a propriedade largura de um objeto, você usa get('width') or getWidth(). Para pegar o valor scaleX, você usaria get('scaleX'), getScaleX() e por ai vai. Há um método como getWidth ou getScaleX para cada uma das propriedades “públicas” do objeto (stroke, strokeWidth, ângulo e outras).
+Isso demonstra que o set é um método universal. Você provavelmente vai usá-lo muitas vezes, e está destinado a ser o mais conveniente possível. E sobre os getters? Há um método get genérico e também um número de gets específicos. Para ler a propriedade largura de um objeto, você usa get('width') ou getWidth(). Para pegar o valor scaleX, você usaria get('scaleX'), getScaleX() e por ai vai. Há um método como getWidth ou getScaleX para cada uma das propriedades “públicas” do objeto (stroke, strokeWidth, ângulo e outras).
 
 Você deve ter notado nos exemplos anteriores, que objetos foram criados com o mesmo hash de configuração como o que acabamos de usar no método set. Você pode “configurar” um objeto em tempo de criação ou usar o método set posteriormente:
 
@@ -184,7 +184,7 @@ rect.set({ width: 10, height: 20, fill: '#f55', opacity: 0.7 });
 
 ### Opções padrão
 
-Até este momento, você deve estar imaginando o que acontece quando você cria um objeto sem passar nenhum objeto de “configuração”. Ele ainda vai ter aquelas propriedades?
+Até o momento, você deve estar imaginando o que acontece quando você cria um objeto sem passar nenhum objeto de “configuração”. Ele ainda vai ter aquelas propriedades?
 
 Sim. Quando as configurações específicas são omitidas durante a criação, os objetos no Fabric sempre tem padrões definidos de propriedades. Você pode usar o seguinte código e ver por você mesmo:
 
@@ -322,7 +322,7 @@ var imgInstance = new fabric.Image(imgElement, {
 canvas.add(imgInstance);
 ```
 
-Note que você passa um elemento imagem para o construtor fabric.Image. Isso cria uma instância de fabric.Image que se parece como a imagem do document. Além disso, você imediatamente define os valores left/top para 100/100, angle para 30 e opacity para 0.85. Uma vez que a imagem é adicionada ao canvas, ela é renderizada no localização 100,100 com o ângulo de 30 graus e é levemente transparente (ver Figura 9). Nada mal!
+Note que você passa um elemento imagem para o construtor fabric.Image. Isso cria uma instância de fabric.Image que se parece como a imagem do document. Além disso, você imediatamente define os valores left/top para 100/100, angle para 30 e opacity para 0.85. Uma vez que a imagem é adicionada ao canvas, ela é renderizada no localização 100,100 com o ângulo de 30 graus e é levemente transparente (ver ***Figura 9***). Nada mal!
 
 <img src="https://raw.github.com/rodrigopandini/articles-fabric.js/master/assets/img/img09.png">
 
@@ -352,7 +352,7 @@ Nós examinamos até agora formas simples e imagens. E formas com conteúdo mais co
 
 Paths em Fabric representa um esboço de uma forma, que pode ser preenchida, ter contorno e modificada de outras maneiras. Paths consistem em uma série de comandos que essencialmente imitam uma caneta indo de um ponto a outro. Com a ajuda de comandos como move, line, curve e arc, Paths podem formar incríveis formas complexas. E com a ajuda de grupos de Paths (PathGroup), as possibilidades se abrem ainda mais.
 
-Paths em Fabric se assemelham aos [elementos SVG <path>](http://www.w3.org/TR/SVG/paths.html#PathElement). Eles usam o mesmo conjunto de comandos, podem ser criados a partir de elementos <path> e podem ser serializados para eles. Eu vou descrever mais sobre serialização e transformação de SVG depois, mas, por enquanto, vale a pena mencionar que você provavelmente não irá criar instâncias de Path a mão (ou raramente irá). Ao invés disso, você vai usar o parser nativo de SVG da Fabric. Mas para entender o que são os objetos Path, vamos criar um simples a mão (veja a ***Figura 10*** com os resultados)
+Paths em Fabric se assemelham aos [elementos SVG <path>](http://www.w3.org/TR/SVG/paths.html#PathElement). Eles usam o mesmo conjunto de comandos, podem ser criados a partir de elementos <path> e podem ser serializados para eles. Eu vou descrever mais sobre serialização e parser de SVG depois, mas, por enquanto, vale a pena mencionar que você provavelmente não irá criar instâncias de Path a mão (ou raramente irá). Ao invés disso, você vai usar o parser nativo de SVG da Fabric. Mas para entender o que são os objetos Path, vamos criar um simples a mão (veja a ***Figura 10*** com os resultados)
 
 ```javascript
 var canvas = new fabric.Canvas('c');
@@ -363,9 +363,9 @@ canvas.add(path);
 
 <img src="https://raw.github.com/rodrigopandini/articles-fabric.js/master/assets/img/img10.png">
 
-***Figura 10: Path simples renderizado pelo Fabric***
+***Figura 10: Path simples renderizado com Fabric***
 
-Aqui você instanciou o objeto fabric.Path e passou para ele a string com as instruções do caminho. Isso pode parecer estranho, mas na verdade é fácil de entender. M representa o comando de mover e diz para a caneta invisível para se mover para o ponto 0, 0. L é para linha e faz a caneta desenhar um linha até o ponto 200, 100. Então outro L cria a linha até 170, 200. Por último, z força a caneta a fechar o desenho do caminho corrente e finalizar a forma.
+Aqui você instanciou o objeto fabric.Path e passou para ele a string com as instruções do caminho. Isso pode parecer estranho, mas na verdade é fácil de entender. M representa o comando de mover e diz para a caneta invisível para se mover para o ponto 0, 0. L é para linha e faz a caneta desenhar uma linha até o ponto 200, 100. Então outro L cria a linha até 170, 200. Por último, z força a caneta a fechar o desenho do caminho corrente e finalizar a forma.
 
 Uma vez que fabric.Path é como qualquer outro objeto em Fabric, você pode também alterar algumas de suas propriedades, ou modificá-lo ainda mais, como mostrado aqui e na ***Figura 11***:
 
@@ -406,15 +406,17 @@ Neste contexto, enquanto o objeto Path do Fabric representa um elemento SVG <pat
 
 Assim como Paths, você provavelmente não irá trabalhar com PathGroup diretamente. Mas se você tropeçar em alguma após transformar um documento SVG, você vai saber exatamente o que é e para que propósitos ela serve.
 
-### Conclusão por agora
+### Conclusão por enquanto
 
 Eu só arranhei a superfície do que é possível fazer com Fabric. Agora você pode criar facilmente qualquer formas simples, formas complexas ou imagens; adicioná-los ao canvas e modificar da maneira que você quiser - suas posições, dimensões, ângulos, cores, opacidade - você define isso.
 
 No próximo artigo desta série, eu vou mostrar como trabalhar com grupos; animações; texto; parser, renderização e serialização de SVG; eventos; filtro de imagens e muito mais.
 
-Enquanto isso, sinta-se livre para olhar os [demos comentados](http://fabricjs.com/demos/) ou [benchmarks](http://fabricjs.com/benchmarks/), juntar-se a discussões no [Stack Overflow](http://stackoverflow.com/questions/tagged/fabricjs), no [grupo](https://groups.google.com/forum/?fromgroups#!forum/fabricjs) ou ir direto para o [docs](http://fabricjs.com/docs/), [wiki](https://github.com/kangax/fabric.js/wiki) ou [source](https://github.com/kangax/fabric.js). Você pode também aprender mais sobre HTML5 Canvas em [MSDN IE Developer Center](http://msdn.microsoft.com/en-us/library/ie/hh771733(v=vs.85).aspx), ou conferir o artigo [An Introduction to the HTML 5 Canvas Element](http://msdn.microsoft.com/en-us/magazine/ff961912.aspx) de Rey Bongo no Script Junkie.
+Enquanto isso, sinta-se livre para olhar os [demos comentados](http://fabricjs.com/demos/) ou [benchmarks](http://fabricjs.com/benchmarks/), juntar-se a discussões no [Stack Overflow](http://stackoverflow.com/questions/tagged/fabricjs), no [grupo](https://groups.google.com/forum/?fromgroups#!forum/fabricjs) ou ir direto para o [docs](http://fabricjs.com/docs/), [wiki](https://github.com/kangax/fabric.js/wiki) ou [source](https://github.com/kangax/fabric.js). Você pode também aprender mais sobre HTML5 Canvas em [MSDN IE Developer Center](http://msdn.microsoft.com/en-us/library/ie/hh771733/), ou conferir o artigo [An Introduction to the HTML 5 Canvas Element](http://msdn.microsoft.com/en-us/magazine/ff961912.aspx) de Rey Bongo no Script Junkie.
 
 Diverta-se experimentando Fabric! Espero que você curta o passeio.
+
+
 
 
 
