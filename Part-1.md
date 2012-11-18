@@ -45,7 +45,8 @@ var rect = new fabric.Rect({
 // "add" rectangle onto canvas
 canvas.add(rect);
 ```
-<img src="http://i.msdn.microsoft.com/jj714178.zaytsev01(en-us,MSDN.10).png">
+<img src="assets/img/img01.png">
+
 ***Figura 1: Retângulo vermelho desenhado com Fabric ou Métodos Nativos do Canvas***
 
 Até este ponto, quase não há diferença em tamanho do código - os dois exemplos são muito similares. Entretanto, você já pode ver como é diferente a abordagem para se trabalhar com o canvas. Com métodos nativos, você opera com o contexto - um objeto que representa o bitmap do canvas. No Fabric, você opera com objetos - você instancia-os, altera suas propriedades e adiciona-os ao canvas. Você pode ver que estes objetos são os cidadãos de primeira classe no território do Fabric.
@@ -75,7 +76,8 @@ var rect = new fabric.Rect({
 });
 canvas.add(rect);
 ```
-<img src="http://i.msdn.microsoft.com/jj714178.zaytsev02(en-us,MSDN.10).png">
+<img src="assets/img/img02.png">
+
 ***Figura 2: Retângulo vermelho desenhado com Fabric ou Métodos Nativos do Canvas***
 
 O que está acontecendo aqui? Tudo que você tem que fazer no Fabric é mudar o valor do ângulo do objeto para 45. Com métodos nativos, entretanto, um maior trabalho é necessário. Lembre-se que você não opera com objetos. Ao invés disso, você tem que mudar a posição e ângulo de todo o bitmap do canvas (ctx.translate, ctx.rotate) para adequar às suas necessidades. Você então desenha o seu retângulo novamente, lembrando-se de deslocar o bitmap adequadamente (-10, -10), então ainda é renderizado no ponto 100, 100. Como bônus, você tem que transformar graus em radianos quando estiver rotacionando o bitmap do canvas.
@@ -108,7 +110,8 @@ rect.set({ left: 20, top: 50 });
 canvas.renderAll();
 ```
 
-<img src="http://i.msdn.microsoft.com/jj714178.zaytsev03(en-us,MSDN.10).png">
+<img src="assets/img/img03.png">
+
 ***Figura 3: Retângulo vermelho desenhado em uma nova localização***
 
 Note uma importante diferença: com Fabric, você não precisa apagar o conteúdo antes de tentar modificar qualquer conteúdo. Você ainda trabalha com objetos simplesmente alterando suas propriedades e então renderiza o canvas novamente para obter uma nova imagem.
@@ -139,7 +142,8 @@ canvas.add(circle, triangle);
 
 Você faz a mesma coisa com qualquer outra forma básica. A Figura 4 mostra um exemplo de um círculo verde desenhado na localização 100,100 e um triângulo azul em 50,50.
 
-<img src="http://i.msdn.microsoft.com/jj714178.zaytsev04(en-us,MSDN.10).png">
+<img src="assets/img/img04.png">
+
 ***Figura 4: Um triângulo azul e um círculo verde desenhados com Fabric***
 
 ### Manipulating objects
@@ -161,7 +165,8 @@ rect.set({ strokeWidth: 5, stroke: 'rgba(100,200,200,0.5)' });
 rect.set('angle', 15).set('flipY', true);
 ```
 
-<img src="http://i.msdn.microsoft.com/jj714178.zaytsev05(en-us,MSDN.10).png">
+<img src="assets/img/img05.png">
+
 ***Figure 5 Red, Rotated, Stroked Rectangle Drawn with Fabric***
 
 Primeiro, o valor do preenchimento é definido para “red”. A próxima atribuição define os valores da espessura e da cor de contorno, dando ao retângulo 5px de espessura e uma cor verde pálida para ela. Finalmente, o código muda as propriedades ângulo e inversão em Y. Note como cada uma das três atribuições usa uma sintaxe um pouco diferente.
@@ -196,7 +201,8 @@ rect.getOpacity(); // 1
 
 Este retângulo tem as propriedades definidas como padrão. Ele é posicionado em 0,0, é preto, totalmente opaco, não tem contorno e nem dimensões (largura e altura são 0). Pelo fato de não ter dimensões, você não pode vê-lo no canvas. Dando a ele qualquer valor positivo para a largura e altura irá revelar um retângulo preto no canto superior esquerdo do canvas, como mostrado na ***Figura 6***.
 
-<img src="http://msdn.microsoft.com/en-us/magazine/jj714178.aspx#author">
+<img src="assets/img/img06.png">
+
 ***Figura 6: Como um retângulo padrão se parece quando definido suas dimensões***
 
 ### Hierarquia e Herança
@@ -255,10 +261,12 @@ canvas.onFpsUpdate = function(){ /* ... */ };
 
 Um dos componentes únicos contruídos para a Fabric é a camada de interatividade em cima do modelo de objetos. O modelo de objetos existe para permitir programaticamente acessar e manipular os objetos no canvas, mas do lado de fora - ao nível do usuário - há uma forma de manipular estes objetos via mouse (ou via toque nos dispositivos de toque). Assim que você inicializa um canvas pela chamada de fabric.Canvas(‘...’), é possível selecionar os objetos (ver ***Figura 7***), arrastá-los, redimensioná-los ou rotacioná-los e até mesmo agrupá-los (ver ***Figura 8***) para manipulá-los como um todo de uma vez!
 
-<img src="http://i.msdn.microsoft.com/jj714178.zaytsev08(en-us,MSDN.10).png">
+<img src="assets/img/img07.png">
+
 ***Figura 7: Retângulo vermelho rotacionado no estado de selecionado (controles visíveis)***
 
-<img src="http://i.msdn.microsoft.com/jj714178.zaytsev09(en-us,MSDN.10).png">
+<img src="assets/img/img08.png">
+
 ***Figura 8: Retângulo e Círculo agrupados (controles visíveis)***
 
 Se você deseja permitir aos usuários arrastar alguma coisa no canvas - digamos uma imagem - tudo que você precisa fazer é inicializar o canvas e adicionar objetos nele. Nenhuma configuração adicional ou setup é necessário.
@@ -316,6 +324,8 @@ canvas.add(imgInstance);
 
 Note que você passa um elemento imagem para o construtor fabric.Image. Isso cria uma instância de fabric.Image que se parece como a imagem do document. Além disso, você imediatamente define os valores left/top para 100/100, angle para 30 e opacity para 0.85. Uma vez que a imagem é adicionada ao canvas, ela é renderizada no localização 100,100 com o ângulo de 30 graus e é levemente transparente (ver Figura 9). Nada mal!
 
+<img src="assets/img/img09.png">
+
 ***Figura 9: Imagem levemente transparente e rotacionada, renderizada com Fabric***
 
 Se você não tem uma imagem no document mas somente a URL de uma imagem, você pode usar fabric.Image.fromURL:
@@ -351,7 +361,7 @@ path.set({ left: 120, top: 120 });
 canvas.add(path);
 ```
 
-<img src="http://i.msdn.microsoft.com/jj714178.zaytsev11(en-us,MSDN.10).png">
+<img src="assets/img/img10.png">
 ***Figura 10: Path simples renderizado pelo Fabric***
 
 Aqui você instanciou o objeto fabric.Path e passou para ele a string com as instruções do caminho. Isso pode parecer estranho, mas na verdade é fácil de entender. M representa o comando de mover e diz para a caneta invisível para se mover para o ponto 0, 0. L é para linha e faz a caneta desenhar um linha até o ponto 200, 100. Então outro L cria a linha até 170, 200. Por último, z força a caneta a fechar o desenho do caminho corrente e finalizar a forma.
@@ -365,7 +375,8 @@ var path = new fabric.Path('M 0 0 L 300 100 L 200 300 z');
 path.set({ fill: 'red', stroke: 'green', opacity: 0.5 });
 canvas.add(path);
 ```
-<img src="http://i.msdn.microsoft.com/jj714178.zaytsev12(en-us,MSDN.10).png">
+<img src="assets/img/img11.png">
+
 ***Figura 11: Uma Path simples modificada***
 
 Por curiosidade, vamos dar uma olhada em uma forma com uma sintaxe um pouco mais complexa. Você vai ver porque criar paths a mão talvez não seja a melhor ideia:
@@ -384,7 +395,8 @@ canvas.add(path.set({ left: 100, top: 200 }));
 
 Aqui, M ainda representa o comando mover, então a caneta inicia sua jornada de desenhar no ponto 121.32, 0. Em seguida, há um comando L (line) que traz a caneta para 44.58, 0. Até aqui tudo bem. Agora vem o comando C, que significa “cubic bezier”. Este comando faz a caneta desenhar uma curva bezier a partir do ponto corrente até 36.67, 0. Ele usa o ponto 29.5, 3.22 como ponto de controle de começo da linha e 24.31, 8.41 como ponto de controle de fim de linha. Toda esta operação é seguida por uma dezena de outros comandos, que finalmente cria a agradável forma de uma seta, como mostrado na ***Figura 12***.
 
-<img src="http://i.msdn.microsoft.com/jj714178.zaytsev13(en-us,MSDN.10).png">
+<img src="assets/img/img12.png">
+
 ***Figura 12: Path complexa renderizada com Fabric***
 
 Há chances de você não querer trabalhar com estas aberrações diretamente. Ao invés disso, você pode usar algo como os métodos fabric.loadSVGFromString ou fabric.loadSVGFromURL para carregar todo o arquivo SVG e deixar o parser SVG do Fabric fazer o trabalho de percorrer todos os elementos SVG e criar os objetos Path correspondentes.
@@ -402,3 +414,13 @@ No próximo artigo desta série, eu vou mostrar como trabalhar com grupos; animaçõ
 Enquanto isso, sinta-se livre para olhar os [demos comentados](http://fabricjs.com/demos/) ou [benchmarks](http://fabricjs.com/benchmarks/), juntar-se a discussões no [Stack Overflow](http://stackoverflow.com/questions/tagged/fabricjs), no [grupo](https://groups.google.com/forum/?fromgroups#!forum/fabricjs) ou ir direto para o [docs](http://fabricjs.com/docs/), [wiki](https://github.com/kangax/fabric.js/wiki) ou [source](https://github.com/kangax/fabric.js). Você pode também aprender mais sobre HTML5 Canvas em [MSDN IE Developer Center](http://msdn.microsoft.com/en-us/library/ie/hh771733(v=vs.85).aspx), ou conferir o artigo [An Introduction to the HTML 5 Canvas Element](http://msdn.microsoft.com/en-us/magazine/ff961912.aspx) de Rey Bongo no Script Junkie.
 
 Diverta-se experimentando Fabric! Espero que você curta o passeio.
+
+#### About the Author
+
+<img src="assets/img/author.png">
+
+Juriy Zaytsev is a passionate JavaScript developer living in New York. He is an ex-Prototype.js core member, blogger at [perfectionkills.com](http://perfectionkills.com/), and the creator of [Fabric.js](http://fabricjs.com) canvas library. Currently Juriy works on his [Printio.ru](http://printio.ru) startup and making Fabric even more fun to use.
+
+***Find Juriy on:***
+- Twitter - [@kangax](http://twitter.com/kangax/)
+- [Juriy's Blog](http://perfectionkills.com/)
