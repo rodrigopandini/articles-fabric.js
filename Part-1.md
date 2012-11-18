@@ -120,13 +120,13 @@ Note uma importante diferença: com Fabric, você não precisa apagar o conteúdo an
 
 Você viu na última seção como trabalhar com retângulos instanciando o construtor fabric.Rect. Fabric, é claro, cobre outras formas básicas também - círculos, triângulo, elipses e por ai vai. As formas são expostas sob o “namespace” fabric, como fabric.Circle, fabric.Triangle, fabric.Ellipse, etc. Fabric provê sete formas básicas:
 
-- fabric.Circle
-- fabric.Ellipse
-- fabric.Line
-- fabric.Polygon
-- fabric.Polyline
-- fabric.Rect
-- fabric.Triangle
+- [fabric.Circle](http://fabricjs.com/docs/symbols/fabric.Circle.html)
+- [fabric.Ellipse](http://fabricjs.com/docs/symbols/fabric.Ellipse.html)
+- [fabric.Line](http://fabricjs.com/docs/symbols/fabric.Line.html)
+- [fabric.Polygon](http://fabricjs.com/docs/symbols/fabric.Polygon.html)
+- [fabric.Polyline](http://fabricjs.com/docs/symbols/fabric.Polyline.html)
+- [fabric.Rect](http://fabricjs.com/docs/symbols/fabric.Rect.html)
+- [fabric.Triangle](http://fabricjs.com/docs/symbols/fabric.Triangle.html)
 
 Para desenhar um círculo, simplesmente crie um objeto círculo e adicione-o ao canvas.
 
