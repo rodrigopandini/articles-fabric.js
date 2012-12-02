@@ -526,6 +526,6 @@ Confira este [exemplo de eventos](http://fabricjs.com/events/) para uma explora�
 Juriy Zaytsev é um apaixonado desenvolvedor JavaScript morando em New York. Ele é ex membro do núcleo Prototype.js, blogueiro em [perfectionkills.com]
 (http://perfectionkills.com/), e criador da biblioteca para canvas [Fabric.js](http://fabricjs.com). No momento, Juriy trabalha em sua startup [Printio.ru](http://printio.ru) e faz a Fabric ainda mais divertida para se usar.
 
-***Find Juriy on:***
+***Encontre Juriy em:***
 - Twitter - [@kangax](http://twitter.com/kangax/)
 - [Juriy's Blog](http://perfectionkills.com/)
