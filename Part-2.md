@@ -42,7 +42,7 @@ rect.animate('angle', '-5', { onChange: canvas.renderAll.bind(canvas) });
 
 Talvez você esteja se perguntando porque eu sempre especifiquei uma função de retorno onChange aqui. Como eu mencionei, o terceiro argumento é opcional, mas chamando canvas.renderAll em cada quadro da animação é o que lhe permite ver a animação atual. Quando você chama o método de animação, ele anima somente o valor da propriedade ao longo do tempo, seguindo o algoritmo especificado (por exemplo, easing). Assim, rect.animate(‘angle’, 45) muda o ângulo do objeto, mas não “re-renderiza” o canvas depois de cada mudança do ângulo. E claro, você precisa desta “re-renderização” para ver a animação.
 
-Lembre-se que há um inteiro modelo de objeto sob a superfície do canvas. Objetos tem suas próprias propriedades e relacionamentos e o canvas é responsável somente por projetar a existência destes objetos para fora do mundo.
+Lembre-se que há todo um modelo de objeto sob a superfície do canvas. Objetos tem suas próprias propriedades e relacionamentos e o canvas é responsável somente por projetar a existência destes objetos para fora do mundo.
 
 A razão pela qual o método animate não “re-renderiza” o canvas após cada alteração é a performance. Ao final, você pode ter centenas ou milhares de objetos animados no canvas e não seria muito inteligente se cada um deles tratasse de renderizar a tela. Na maioria das vezes, você provavelmente precisa especificar explicitamente canvas.renderAll como a função de retorno onChange.
 
