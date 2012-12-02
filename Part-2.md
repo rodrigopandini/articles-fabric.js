@@ -516,7 +516,7 @@ circle.on('selected', function() {
 
 Aqui eu estou associando ouvintes de eventos diretamente as instâncias do retângulo e do círculo. Ao invés de object:selected, eu estou usando o evento selected. Da mesma forma, eu usaria o evento modified (object:modified quando associado ao canvas), o evento rotating (object:rotating quando associado ao canvas), e assim por diante.
 
-Confira [este exemplo](http://fabricjs.com/events/) de eventos para uma exploração mais extensiva do sistema de eventos da Fabric.
+Confira este [exemplo de eventos](http://fabricjs.com/events/) para uma exploração mais extensiva do sistema de eventos da Fabric.
 
 
 #### Sobre o autor
