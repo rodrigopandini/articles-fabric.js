@@ -71,7 +71,7 @@ Note que fabric.util.ease.easeOutBounce é uma opção de easing. Outras opçõe
 
 No primeiro artigo desta série, você viu como trabalhar com imagens em Fabric. Há o construtor fabric.Image que aceita uma elemento imagem. Também há o método fabric.Image.fromURL o qual cria uma instância de uma imagem a partir de uma string de URL. Qualquer uma destas imagens podem ser postas e renderizadas no canvas como qualquer outro objeto.
 
-Mas tão legal quanto se trabalhar com imagens é, ainda mais legal, aplicar filtros de imagens nelas. Fabric dispõe de uns poucos filtros por padrão (você pode ver eles [aqui](http://fabricjs.com/image-filters/)) e faz com que a definição de seus próprios filtros fique fácil. Alguns dos filtros nativos que você talvez já esteja familiar são o filtro para remover o branco de fundo, o filtro para tons de cinza ou filtros para de inversão ou brilho. Outros que talvez sejam menos familiares como transparência em gradiente, sépia e noise.
+Mas tão legal quanto trabalhar com imagens é, senão mais legal ainda, aplicar filtros de imagens nelas. Fabric dispõe de alguns poucos filtros por padrão (você pode ver eles [aqui](http://fabricjs.com/image-filters/)) e faz com que a definição de seus próprios filtros fique fácil. Alguns dos filtros nativos que você talvez já esteja familiar são o filtro para remover o branco de fundo, o filtro para tons de cinza ou filtros para de inversão ou brilho. Outros que talvez sejam menos familiares como transparência em gradiente, sépia e noise.
 
 Cada instância de fabric.Image tem a propriedade filters, que é um simples array de filtros. Cada um dos filtros neste array é uma instância de um dos filtros de Fabric ou uma instância de um filtro customizável.
 
@@ -465,6 +465,58 @@ var textWithBackground = new fabric.Text(text, {
 <img src="https://raw.github.com/rodrigopandini/articles-fabric.js/master/assets/img/part_2/img17.png">
 
 ***Figura 17. Efeito de background no texto***
+
+
+### Eventos
+
+A arquitetura orientada a eventos é a base para algum poder incrível e flexibilidade em um framework. Fabric não é exceção, ela provê um extenso sistema de eventos, começando com eventos de baixo nível de mouse para os de alto nível de objetos.
+
+Estes eventos lhe permitem tocar em diferentes momentos de várias ações que acontecem em um canvas. Você quer saber quando o mouse foi pressionado? Simplesmente observe o evento mouse:down. Como saber quando um objeto foi adicionado ao canvas? Neste caso, object:added é o que você está procurando. E quando saber quando todo o canvas foi renderizado? É só usar after:render.
+
+A API de eventos é muito simples e lembra a da JQuery, da Underscore.js ou outra biblioteca popular JS. Há um método on para inicializar o ouvinte ao evento e um método off para removê-lo.
+Aqui está um exemplo:
+
+```javascript
+var canvas = new fabric.Canvas('...');
+canvas.on('mouse:down', function(options) {
+  console.log(options.e.clientX, options.e.clientY);
+});
+```
+
+Neste código, eu estou adicionando um ouvinte ao evento mouse:down do canvas e dando a ele uma função tratadora de eventos (handler) que irá fazer o log das coordenadas da onde o evento é originário. Em outras palavras, o função tratadora do evento irá fazer o log da onde exatamente o mouse foi pressionada no canvas. A função tratadora do evento recebe um objeto de propriedades, o qual possui duas propriedades: e, que é o evento original, e o alvo (target), o qual é o objeto que foi clicado no canvas, se houver algum. O evento sempre estará presente toda vez, mas o alvo existe somente se o usuário realmente clicar em um objeto no canvas. Da mesma forma, o alvo é passado para a função tratadora de evento somente quando fizer sentido - por exemplo, para mouse:down sim, mas não para after:render (o qual representa que todo o canvas foi redesenhado).
+
+```javascript
+canvas.on('mouse:down', function(options) {
+  if (options.target) {
+    console.log('an object was clicked! ', options.target.type);
+  }
+});
+```
+
+Este exemplo irá fazer o log “an object was clicked! ” (“um objeto foi clicado”) se você clicar em um objeto. Ele também irá exibir no log o tipo de objeto clicado.
+
+Alguns outros eventos ao nível de mouse disponíveis na Fabric são mouse:move e mouse:up. Eventos genéricos incluem after:render, e também há eventos relativos a seleção: before:selection:created, selection:created, selection:cleared. E finalmente eventos relativos a objetos incluem object:modified, object:selected, object:moving, object:scaling, object:rotating, and object:added.
+
+Eventos como object:moving (ou object:scaling) são disparados continuamente toda vez que um objeto é movido (ou é redimensionado), até mesmo por 1 pixel. Na outra mão, eventos como object:modified ou selection:created são disparados somente ao final da ação (modificação do objeto ou criação de seleção).
+
+Note como os eventos são associados diretamente ao canvas (canvas.on(‘mouse:down’, … )). Como você pode imaginar, isso significa que os eventos tem escopo das instâncias do canvas. Se você tem vários canvas em sua página, você pode associar diferentes ouvintes de eventos para cada uns deles. Eles são independentes e respeitam somente os eventos que foram associados a eles.
+
+Por conveniência, Fabric pega o sistema de eventos e vai além, permitindo associar ouvintes diretamente aos objetos do canvas. Dê uma olhada neste código:
+
+```javascript
+var rect = new fabric.Rect({ width: 100, height: 50, fill: 'green' });
+rect.on('selected', function() {
+  console.log('selected a rectangle');
+});
+var circle = new fabric.Circle({ radius: 75, fill: 'blue' });
+circle.on('selected', function() {
+  console.log('selected a circle');
+});
+```
+
+Aqui eu estou associando ouvintes de eventos diretamente as instâncias do retângulo e do círculo. Ao invés de object:selected, eu estou usando o evento selected. Da mesma forma, eu usaria o evento modified (object:modified quando associado ao canvas), o evento rotating (object:rotating quando associado ao canvas), e assim por diante.
+
+Confira [este exemplo](http://fabricjs.com/events/) de eventos para uma exploração mais extensiva do sistema de eventos da Fabric.
 
 
 #### Sobre o autor
