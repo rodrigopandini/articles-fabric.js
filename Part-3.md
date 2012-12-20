@@ -41,13 +41,13 @@ var group = new fabric.Group([ text, circle ], {
 canvas.add(group);
 ```
 
-Primeiro nós criamos o objeto texto “hello world”. Em seguida, um círculo com 100px de raio, com cor de preenchimento “#eef” e achatado verticalmente (scaleY=0.5). E então criamos uma instância de `fabric.Group`, passando o array com estes objetos, e dando a ele a posição 150,100 e ângulo de -10. Finalmente, o grupo foi adicionado ao canvas como qualquer outros objeto deveria ser (com `canvas.add()`).
+Primeiro nós criamos o objeto texto “hello world”. Em seguida, um círculo com 100px de raio, com cor de preenchimento “#eef” e achatado verticalmente (scaleY=0.5). E então criamos uma instância de `fabric.Group`, passando o array com estes objetos, e dando a ele a posição 150,100 e ângulo de -10. Finalmente, o grupo foi adicionado ao canvas como qualquer outro objeto deveria ser (com `canvas.add()`).
 
 E voila! Você vê um objeto no canvas que se parece com uma elipse rotulada. Note como, em ordem de modificar o objeto, nós simplesmente alteramos as propriedades do grupo, dando a ele valores customizados left, top e angle. Você pode agora trabalhar com o objeto como uma entidade única.
 
 <img src="https://raw.github.com/rodrigopandini/articles-fabric.js/master/assets/img/part_3/img02.png">
 
-***Figura 2: Grupo com texto e círculo achatado***
+***Figura 2: Grupo com um texto e um círculo achatado***
 
 Agora que nós temos um grupo no canvas, vamos alterar ele um pouco:
 
@@ -120,7 +120,7 @@ fabric.Image.fromURL('/assets/pug.jpg', function(img) {
 
 ***Figura 5: Grupo de imagens com posições relativas***
 
-Então quais outros métodos estão disponíveis quando trabalhamos com grupos? Há o método `getObjects()`, o qual funciona exatamente da mesma forma que `fabric.Canvas#getObjects()` e retorna um array com todos os objetos do grupo. Tem o método `size()` que representa a quantidade de objetos no grupo. Há também o `contains()` que permite verificar se um objeto particular está presente no grupo. Há o `item()`, que como nós vimos anteriormente, permite pegar um objeto específico em um grupo. Também temos o `forEachObject()`, denovo refletindo `fabric.Canvas#forEachObject`, somente em relação aos objetos do grupo. Finalmente temos os métodos `add()` e o `remove()` que adiciona e remove objetos do grupo, nesta ordem. 
+Então quais outros métodos estão disponíveis quando trabalhamos com grupos? Há o método `getObjects()`, o qual funciona exatamente da mesma forma que `fabric.Canvas#getObjects()` e retorna um array com todos os objetos do grupo. Tem o método `size()` que representa a quantidade de objetos no grupo. Há também o `contains()` que permite verificar se um objeto particular está presente no grupo. Há o `item()`, que como nós vimos anteriormente, permite pegar um objeto específico em um grupo. Também temos o `forEachObject()`, denovo refletindo `fabric.Canvas#forEachObject`, mas somente em relação aos objetos do grupo. Finalmente temos os métodos `add()` e o `remove()` que adiciona e remove objetos do grupo, nesta ordem. 
 
 Você pode adicionar/remover objetos do grupo de 2 formas - com ou sem atualização das dimensões/posição do grupo.
 
@@ -181,7 +181,8 @@ canvas.add(group);
 ### Serialização
 
 Assim que você começa a construir um aplicativo que possa manter o estado, em algum momento, você vai precisar fazer a ***serialização do canvas***, seja para permitir ao usuário salvar o conteúdo do canvas no servidor ou para transmitir o conteúdo para outro cliente. Então como enviar o conteúdo do canvas? Claro que você tem sempre a opção de exportar o canvas como uma imagem, mas fazer o upload desta imagem para o servidor certamente consome muita largura de banda. Dessa forma, como nada mais supera texto quando se trata de tamanho, é exatamente por isso que a Fabric poporciona um excelente suporte para a serialização e deserialização do canvas.
-toObject, toJSON
+
+***toObject, toJSON***
 
 A espinha dorsal da serialização do canvas em Fabric são os métodos `fabric.Canvas#toObject()` e `fabric.Canvas#toJSON()`. Vejamos um exemplo simples, primeiro serializando um canvas vazio:
 
@@ -235,7 +236,7 @@ console.log(JSON.stringify(canvas));
 ... e o log  da saída é:
 
 ```javascript
-'{"objects":[{"type":"rect","left":50,"top":50,"width":20,"height":20,"fill":"green","overlayFill":null,"stroke":null,"strokeWidth":1,"strokeDashArray":null,"scaleX":1,"scaleY":1,"angle":0,"flipX":false,"flipY":false,"opacity":1,"selectable":true,"hasControls":true,"hasBorders":true,"hasRotatingPoint":false,"transparentCorners":true,"perPixelTargetFind":false,"rx":0,"ry":0},{"type":"circle","left":100,"top":100,"width":100,"height":100,"fill":"red","overlayFill":null,"stroke":null,"strokeWidth":1,"strokeDashArray":null,"scaleX":1,"scaleY":1,"angle":0,"flipX":false,"flipY":false,"opacity":1,"selectable":true,"hasControls":true,"hasBorders":true,"hasRotatingPoint":false,"transparentCorners":true,"perPixelTargetFind":false,"radius":50}],"background":"rgba(0, 0, 0, 0)"}'
+'{"objects":[{***"type"***:"rect","left":50,"top":50,"width":20,"height":20,"fill":"green","overlayFill":null,"stroke":null,"strokeWidth":1,"strokeDashArray":null,"scaleX":1,"scaleY":1,"angle":0,"flipX":false,"flipY":false,"opacity":1,"selectable":true,"hasControls":true,"hasBorders":true,"hasRotatingPoint":false,"transparentCorners":true,"perPixelTargetFind":false,"rx":0,"ry":0},{***"type":"circle"***,"left":100,"top":100,"width":100,"height":100,"fill":"red","overlayFill":null,"stroke":null,"strokeWidth":1,"strokeDashArray":null,"scaleX":1,"scaleY":1,"angle":0,"flipX":false,"flipY":false,"opacity":1,"selectable":true,"hasControls":true,"hasBorders":true,"hasRotatingPoint":false,"transparentCorners":true,"perPixelTargetFind":false,"radius":50}],"background":"rgba(0, 0, 0, 0)"}'
 ```
 
 Eu realcei as partes `"type":"rect"` e `"type":"circle"`, assim você pode ver melhor onde esses objetos estão. Mesmo que a princípio possa parecer um monte de saída, isso não é ***nada*** comparado com o que você teria com a serialização como imagem. Só para comparação, vamos ver cerca de um décimo (!) da string que você teria com `canvas.toDataURL('png')`
@@ -281,7 +282,7 @@ Você deve estar pensando porque há também o método `fabric.Canvas#toObject`.
 
 Como você pode ver, a saída de `toJSON` é essencialmente a saída de toObject “stringuificada”. Agora, a coisa interessante (e útil!) é que essa saída de `toObject` é esperta e preguiçosa. O que você vê dentro do array de “objects” é o resultado da iteração sobre todo os objetos do canvas e delegando para os seus próprios métodos `toObject` . `fabric.Path` tem seu próprio `toObject` - que como sabemos retorna o array de “pontos” e `fabric.Image` tem seu próprio `toObject` - que como sabemos retorna a propriedade “src”. Em um estilo verdadeiramente orientado a objetos, todos os objetos são capazes de serializar a si mesmos.
 
-Isso significa que quando você criar sua própria classe, ou simplesmente precisa customizar a representação serializada do objeto, tudo que você precisa fazer é trabalhar com o método `toObject` - até mesmo substituí-lo completamente ou extendê-lo. Vamos tentar isso:
+Isso significa que quando você for criar sua própria classe, ou simplesmente precisar customizar a representação serializada do objeto, tudo que você vai precisar fazer é trabalhar com o método `toObject` - até mesmo substituí-lo completamente ou extendê-lo. Vamos tentar isso:
 
 ```javascript
 var rect = new fabric.Rect();
@@ -325,9 +326,11 @@ console.log(JSON.stringify(canvas));
 ```
 
 Nós extendemos o método `toObject` existente no objeto com a propriedade - “name”, assim esta propriedade faz parte agora da saída do `toObject` e como resultado aparece na representação JSON do canvas. Mais uma coisa importante a se mencionar é que se você extende um objeto como esse, você também vai ter que ter certeza que a classe do objeto (`fabric.Rect` neste caso) tenha esta propriedade no array “stateProperties”, assim, ao carregar o canvas a partir de uma representação em string será feito o parse e ela será adicionada ao objeto corretamente.
-`toSVG`
 
-Another efficient text-based canvas representation is in SVG format. Since Fabric specializes in SVG parsing and rendering on canvas, it only makes sense to make this a two-way process and provide canvas-to-SVG conversion. Let's add the same rectangle to canvas, and see what kind of representation is returned from `toSVG` method:
+***toSVG***
+
+Outra representação baseada em texto do canvas é no formato SVG. Uma vez que Fabric é especializada em fazer o parser de SVG e renderizar no canvas, isso só faz sentido para fazer disso um processo de duas vias e prover a conversão canvas para SVG. Vamos adicionar o mesmo retângulo no canvas e ver que tipo de representação é retornada pelo método `toSVG`:
+
 
 ```javascript
 canvas.add(new fabric.Rect({
@@ -346,17 +349,18 @@ console.log(canvas.toSVG());
 '<?xml version="1.0" standalone="no" ?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="800" height="700" xml:space="preserve"><desc>Created with Fabric.js 0.9.21</desc><rect x="-10" y="-10" rx="0" ry="0" width="20" height="20" style="stroke: none; stroke-width: 1; stroke-dasharray: ; fill: green; opacity: 1;" transform="translate(50 50)" /></svg>'
 ```
 
-Assim como `toJSON` e `toObject`, `toSVG` - quando chamado no canvas - delega sua lógica para cada objeto individualmente, e cada objeto possui seu próprio método `toSVG` que específico para o tipo de objeto. Se você precisar de modificar ou extender a representação SVG do objeto, você pode fazer a mesma coisa com `toSVG` como nós fizemos com `toObject`.
+Assim como `toJSON` e `toObject`, o método `toSVG` - quando chamado no canvas - delega sua lógica para cada objeto individualmente, e cada objeto possui seu próprio método `toSVG` que é específico para o tipo de objeto. Se você precisar de modificar ou extender a representação SVG do objeto, você pode fazer a mesma coisa com `toSVG` como nós fizemos com `toObject`.
 
-O benefício da representação SVG comparado com a propriedade `toObject`/`toJSON` da Fabric é que você pode abrí-lo em qualquer dispositivo capaz de renderizar SVG (browser, aplicativos, impressoras, câmeras, etc) e ele deverá funcionar. Com `toObject`/`toJSON`, entretando, você precisa primeiro de carregá-lo no canvas. Falando em carregar coisas no canvas, agora que podemos serializar o canvas em um eficiente bloco de texto, como iremos carregá-lo de volta no canvas?
+O benefício da representação SVG comparado com a propriedade `toObject`/`toJSON` da Fabric é que você pode abrí-lo em qualquer dispositivo capaz de renderizar SVG (browser, aplicativos, impressoras, câmeras, etc) e ele deverá funcionar. Com `toObject`/`toJSON`, entretando, você precisa primeiro de carregá-lo no canvas. 
+Falando em carregar coisas no canvas, agora que podemos serializar o canvas em um eficiente bloco de texto, como iremos carregá-lo de volta no canvas?
 
 ### Deserialização, SVG parser
 
-Similarmente com a serialização, há duas formas de carregar o canvas de uma string: a partir da representação JSON ou a partir de um SVG. Quando usamos a representação JSON, há os métodos `fabric.Canvas#loadFromJSON` e `fabric.Canvas#loadFromDatalessJSON`. Quando usamos SVG, há os métodos `fabric.loadSVGFromURL` e `fabric.loadSVGFromString`.
+Similarmente com a serialização, há duas formas de carregar o canvas a partir de uma string: a partir da representação JSON ou a partir de um SVG. Quando usamos a representação JSON, há os métodos `fabric.Canvas#loadFromJSON` e `fabric.Canvas#loadFromDatalessJSON`. Quando usamos SVG, há os métodos `fabric.loadSVGFromURL` e `fabric.loadSVGFromString`.
 
 Note que os 2 primeiros métodos são únicos na instância e são chamados no canvas diretamente, enquanto os 2 últimos métodos são estáticos e são chamados nos objetos "fabric" ao invés de no canvas.
 
-Não há muito o que dizer sobre estes métodos. Eles funcionam exatamente como você esperaria que funcionasse. Vamos pegar, por exemplo, o JSON da saída anterior do canvas e carregá-lo em um canvas vazia:
+Não há muito o que dizer sobre estes métodos. Eles funcionam exatamente como você esperaria que funcionasse. Vamos pegar, por exemplo, o JSON da saída anterior do canvas e carregá-lo em um canvas vazio:
 
 ```javascript
 var canvas = new fabric.Canvas();
@@ -370,7 +374,7 @@ canvas.loadFromJSON('{"objects":[{"type":"rect","left":50,"top":50,"width":20,"h
 
 ***Figura 6: objetos carregados por meio do método canvas.loadFromJSON***
 
-Então carregar um canvas a partir de uma string é muito fácil. Mas e o método de aparência estranha `loadFromDatalessJSON`? Como exatamente ele é diferente de `loadFromJSON` que nós usamos anteriormente? Para entender porque precisamos deste método, nós precisamos olhar um canvas serializado que tem um objeto path mais ou menos complexo. Como este aqui:
+Então, carregar um canvas a partir de uma string é muito fácil. Mas e o método de aparência estranha `loadFromDatalessJSON`? Como exatamente ele é diferente de `loadFromJSON` que nós usamos anteriormente? Para entender porque precisamos deste método, nós precisamos olhar um canvas serializado que tem um objeto path mais ou menos complexo. Como este aqui:
 
 <img src="https://raw.github.com/rodrigopandini/articles-fabric.js/master/assets/img/part_3/img07.png">
 
@@ -397,11 +401,11 @@ console.log(JSON.stringify(canvas.toDatalessJSON()));
 .. e o log da saída é:
 
 ```javascript
-{"objects":[{"type":"path","left":143,"top":143,"width":175,"height":151,"fill":"#231F20","overlayFill":null,"stroke":null,"strokeWidth":1,"strokeDashArray":null,"scaleX":1,"scaleY":1,"angle":-19,"flipX":false,"flipY":false,"opacity":1,"selectable":true,"hasControls":true,"hasBorders":true,"hasRotatingPoint":false,"transparentCorners":true,"perPixelTargetFind":false,"path":"/assets/dragon.svg"}],"background":"rgba(0, 0, 0, 0)"}
+{"objects":[{"type":"path","left":143,"top":143,"width":175,"height":151,"fill":"#231F20","overlayFill":null,"stroke":null,"strokeWidth":1,"strokeDashArray":null,"scaleX":1,"scaleY":1,"angle":-19,"flipX":false,"flipY":false,"opacity":1,"selectable":true,"hasControls":true,"hasBorders":true,"hasRotatingPoint":false,"transparentCorners":true,"perPixelTargetFind":false,***"path":"/assets/dragon.svg"***}],"background":"rgba(0, 0, 0, 0)"}
 ```
-Bem, isso é certamente menor! Então o que aconteceu? Note como antes de chamar `toDatalessJSON`, nós definimos a propriedade "sourcePath" do objeto path (a forma do dragão) o valor "/assets/dragon.svg". Assim, quando chamamos `toDatalessJSON` a enorme string do path previamente visto (aqueles dezenas de comandos de path) foi subistituído com uma única string "dragon.svg". Você pode ver isso destacado abaixo.
+Bem, isso é certamente menor! Então o que aconteceu? Note como antes de chamar `toDatalessJSON`, nós definimos a propriedade "sourcePath" do objeto path (a forma do dragão) o valor "/assets/dragon.svg". Assim, quando chamamos `toDatalessJSON` a enorme string do path previamente visto (aqueles dezenas de comandos de path) foi subistituído com uma única string "dragon.svg". Você pode ver isso destacado acima.
 
-Quando trabalhamos com muitos shapes complexos, `toDatalessJSON` nos permite reduzir a representação do canvas \even further\ e subistituir os enormes dados de representação do canvas com um simples link para o SVG.
+Quando trabalhamos com muitos shapes complexos, `toDatalessJSON` nos permite reduzir ainda mais a representação do canvas e substituir os enormes dados de representação do canvas com um simples link para o SVG.
 
 E agora voltando ao método `loadFromDatalessJSON`... você pode provavelmente achar que isso simplesmente permite carregar o canvas de uma versão representação dataless. `loadFromDatalessJSON` sabe como pegar essa string de "path" (como "/assets/dragon.svg") carregá-lo e então usar como dados para os objetos correspondentes.
 
@@ -414,17 +418,17 @@ fabric.loadSVGFromString('...', function(objects, options) {
 });
 ```
 
-O primeiro argumento é a string SVG e o segundo é uma função de retorno (callback). A função de retorno é invocada quando é feito o parse do SVG é carregado e ela recebe 2 argumentos - `objects` e `options`. objects contém um array de objetos parsed a partir do SVG - paths, path groups (para objetos complexos), imagens, texto, etc. Em ordem de agrupar todos estes objetos em uma coleção "coesiva" e para fazê-los para parece da mesma forma que eles são no documento SVG, nós estamos usando `fabric.util.groupSVGElements` passando ambos `objects` e `options`. No retorno, nós termos uma instância de `fabric.Path` ou `fabric.pathGroup`, o qual nós podemos então adicioná-los no canvas.
+O primeiro argumento é a string SVG e o segundo é uma função de retorno (callback). A função de retorno é invocada quando é feito o parse do SVG carregado e ela recebe 2 argumentos - `objects` e `options`. objects contém um array de objetos resultado do parser do SVG - paths, path groups (para objetos complexos), imagens, texto, etc. Em ordem de agrupar todos estes objetos em uma coleção "coesiva" e para fazê-los parecer da mesma forma que eles são no documento SVG, nós estamos usando `fabric.util.groupSVGElements` passando ambos `objects` e `options`. No retorno, nós temos uma instância de `fabric.Path` ou `fabric.pathGroup`, o qual nós podemos então adicioná-los no canvas.
 
-`fabric.loadSVGFromURL` funciona da mesma forma, exceto que você passa a string contendo a URL ao invés do conteúdo SVG. Note que Fabric irá tentar buscar essa URL via XMLHTTPRequest, assim o SVG precisa está de acordo com as regras SOP usuais.
+`fabric.loadSVGFromURL` funciona da mesma forma, exceto pelo fato que você passa a string contendo a URL ao invés do conteúdo SVG. Note que Fabric irá tentar buscar essa URL via XMLHTTPRequest, assim o SVG precisa está de acordo com as regras SOP usuais.
 
 ### Subclasse
 
 Uma vez que a Fabric é construida ao estilo verdadeiramente orientado a objetos, ela foi planejada para fazer subclasses e extenções de um forma simples e natural. Como você viu na primeira parte desta série, há uma hierarquia dos objetos na Fabric. Todos os objetos 2D (paths, images, text, etc) herdam de `fabric.Object` e algumas "classes" - como `fabric.PathGroup` - formam uma herânça em terceira nível.
 
-Então como nós criamos subclasses de uma classe existente na Fabric? Ou talvez até mesmo criarmos nossa própria?
+Então como nós criamos subclasses de uma classe existente na Fabric? Ou talvez até mesmo criarmos nossa própria classe?
 
-Para a primeira pergunta, nós iremos precisar do método utilitário `fabric.util.createClass`. `createClass` não nada mais do que uma simples abstração sobre o protótipo de herança do Javascript. Vamos criar uma "classe" Ponto simples:
+Para a primeira pergunta, nós iremos precisar do método utilitário `fabric.util.createClass`. `createClass` não nada mais do que uma simples abstração sobre o protótipo de herança do Javascript (prototype). Vamos criar uma "classe" Ponto simples:
 
 ```javascript
 var Point = fabric.util.createClass({
@@ -449,7 +453,7 @@ point.y; // 20
 point.toString(); // "10/20"
 ```
 
-Se nós quizermos criar um filho da class "Point" - digamos um ponto colorido, nós poderiamos usar `createClass` dessa forma:
+Se nós quizermos criar um filho da classe "Point" - digamos um ponto colorido, nós poderiamos usar `createClass` dessa forma:
 
 ```javascript
 var ColoredPoint = fabric.util.createClass(Point, {
@@ -507,7 +511,7 @@ var LabeledRect = fabric.util.createClass(fabric.Rect, {
 
 Parece que muita coisa está acontecendo aqui, mas na verdade é muito simples.
 
-Primeiro, nós estamos especificando a "classe" pai como `fabric.Rect`, para utilizar suas habilidade de renderização. Em seguida, nós definimos a propriedade "type", com o valor "labeledRect". Isso é só para consistência, uma vez que todos os objetos Fabric tem a propriedade type (rect, circle, path, text, etc.). Então há um construtor já familiar (`initialize`) com o qual nós estamos utilizando `callSuper` de novo. Adicionalmente, nós definimos um rótulo do objeto qulaquer valor passado via options. Finalmente, nós temos dois métodos - `toObject` e `_render`. `toObject`, como nós já sabemos do capítulo de serialização, é responsável pela representação do object (e JSON) na instância. Uma vez que `LabeledRect` tem as mesmas propriedades de um retângulo regular, mas também um rótulo, nós estamos extendendo o método `toObject` do pai e simplesmente adicionando o rótulo nele. Por último mas não menos importante o método _render é o responsável por desenhar a instância. Há outra chamada a `callSuper` nela, o qual renderiza o retângulo e adicionalmente 3 linhas para a lógica de renderização do text.
+Primeiro, nós estamos especificando a "classe" pai como `fabric.Rect`, para utilizar suas habilidade de renderização. Em seguida, nós definimos a propriedade "type", com o valor "labeledRect". Isso é só para consistência, uma vez que todos os objetos Fabric tem a propriedade type (rect, circle, path, text, etc.). Então há um construtor já familiar (`initialize`) com o qual nós estamos utilizando `callSuper` de novo. Adicionalmente, nós definimos um rótulo do objeto qualquer valor passado via options. Finalmente, nós temos dois métodos - `toObject` e `_render`. `toObject`, como nós já sabemos do capítulo de serialização, é responsável pela representação do object (e JSON) na instância. Uma vez que `LabeledRect` tem as mesmas propriedades de um retângulo regular, mas também um rótulo, nós estamos extendendo o método `toObject` do pai e simplesmente adicionando o rótulo nele. Por último, mas não menos importante, o método _render é o responsável por desenhar a instância. Há outra chamada a `callSuper` nela, o qual renderiza o retângulo e adicionalmente 3 linhas para a lógica de renderização do texto.
 
 Agora, se nós renderizarmos tal objeto:
 
@@ -570,8 +574,8 @@ _render: function(ctx) {
 ...
 ```
 
-Uma nota, eu estou empacotando esta terceira parte desta séria, na qual nós dividimos em alguns dos aspectos mais avançados da Fabric.
-Com a ajuda dos grupos, classes e serialialização e desserialização você pode levar a sua aplicação a um novo nível.
+Uma nota, eu estou empacotando a terceira parte desta séria, na qual nós dividimos em alguns dos aspectos mais avançados da Fabric.
+Com a ajuda dos grupos, classes e (des)serialialização você pode levar a sua aplicação a um novo nível.
 
 #### Sobre o autor
 
