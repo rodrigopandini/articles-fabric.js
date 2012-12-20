@@ -236,7 +236,7 @@ console.log(JSON.stringify(canvas));
 ... e o log  da saída é:
 
 ```javascript
-'{"objects":[{***"type"***:"rect","left":50,"top":50,"width":20,"height":20,"fill":"green","overlayFill":null,"stroke":null,"strokeWidth":1,"strokeDashArray":null,"scaleX":1,"scaleY":1,"angle":0,"flipX":false,"flipY":false,"opacity":1,"selectable":true,"hasControls":true,"hasBorders":true,"hasRotatingPoint":false,"transparentCorners":true,"perPixelTargetFind":false,"rx":0,"ry":0},{***"type":"circle"***,"left":100,"top":100,"width":100,"height":100,"fill":"red","overlayFill":null,"stroke":null,"strokeWidth":1,"strokeDashArray":null,"scaleX":1,"scaleY":1,"angle":0,"flipX":false,"flipY":false,"opacity":1,"selectable":true,"hasControls":true,"hasBorders":true,"hasRotatingPoint":false,"transparentCorners":true,"perPixelTargetFind":false,"radius":50}],"background":"rgba(0, 0, 0, 0)"}'
+'{"objects":[{"type":"rect","left":50,"top":50,"width":20,"height":20,"fill":"green","overlayFill":null,"stroke":null,"strokeWidth":1,"strokeDashArray":null,"scaleX":1,"scaleY":1,"angle":0,"flipX":false,"flipY":false,"opacity":1,"selectable":true,"hasControls":true,"hasBorders":true,"hasRotatingPoint":false,"transparentCorners":true,"perPixelTargetFind":false,"rx":0,"ry":0},{"type":"circle","left":100,"top":100,"width":100,"height":100,"fill":"red","overlayFill":null,"stroke":null,"strokeWidth":1,"strokeDashArray":null,"scaleX":1,"scaleY":1,"angle":0,"flipX":false,"flipY":false,"opacity":1,"selectable":true,"hasControls":true,"hasBorders":true,"hasRotatingPoint":false,"transparentCorners":true,"perPixelTargetFind":false,"radius":50}],"background":"rgba(0, 0, 0, 0)"}'
 ```
 
 Eu realcei as partes `"type":"rect"` e `"type":"circle"`, assim você pode ver melhor onde esses objetos estão. Mesmo que a princípio possa parecer um monte de saída, isso não é ***nada*** comparado com o que você teria com a serialização como imagem. Só para comparação, vamos ver cerca de um décimo (!) da string que você teria com `canvas.toDataURL('png')`
@@ -401,7 +401,7 @@ console.log(JSON.stringify(canvas.toDatalessJSON()));
 .. e o log da saída é:
 
 ```javascript
-{"objects":[{"type":"path","left":143,"top":143,"width":175,"height":151,"fill":"#231F20","overlayFill":null,"stroke":null,"strokeWidth":1,"strokeDashArray":null,"scaleX":1,"scaleY":1,"angle":-19,"flipX":false,"flipY":false,"opacity":1,"selectable":true,"hasControls":true,"hasBorders":true,"hasRotatingPoint":false,"transparentCorners":true,"perPixelTargetFind":false,***"path":"/assets/dragon.svg"***}],"background":"rgba(0, 0, 0, 0)"}
+{"objects":[{"type":"path","left":143,"top":143,"width":175,"height":151,"fill":"#231F20","overlayFill":null,"stroke":null,"strokeWidth":1,"strokeDashArray":null,"scaleX":1,"scaleY":1,"angle":-19,"flipX":false,"flipY":false,"opacity":1,"selectable":true,"hasControls":true,"hasBorders":true,"hasRotatingPoint":false,"transparentCorners":true,"perPixelTargetFind":false,"path":"/assets/dragon.svg"}],"background":"rgba(0, 0, 0, 0)"}
 ```
 Bem, isso é certamente menor! Então o que aconteceu? Note como antes de chamar `toDatalessJSON`, nós definimos a propriedade "sourcePath" do objeto path (a forma do dragão) o valor "/assets/dragon.svg". Assim, quando chamamos `toDatalessJSON` a enorme string do path previamente visto (aqueles dezenas de comandos de path) foi subistituído com uma única string "dragon.svg". Você pode ver isso destacado acima.
 
