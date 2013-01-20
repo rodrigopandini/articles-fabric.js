@@ -9,15 +9,15 @@ Nós cobrimos muitos tópicos nas séries anteriores; desde a manipulação básica de
 
 ### Desenho livre
 
-Se há uma coisa no ```javascript <canvas> ``` que realmente brilha é o excelente suporte a desenho livre! Uma vez que o canvas é simplesmente um bitmap 2D - um papel para se pintar - realizar desenho livre é muito natural. E claro, Fabric cuida disso para gente.
+Se há uma coisa no ```<canvas>``` que realmente brilha é o excelente suporte a desenho livre! Uma vez que o canvas é simplesmente um bitmap 2D - um papel para se pintar - realizar desenho livre é muito natural. E claro, Fabric cuida disso para gente.
 
-O modo de desenho livre é habilitado simplesmente definindo a propriedade ```javascript isDrawingMode``` do canvas Fabric como ```javascript true```. Isso imediatamente faz com que qualquer clique futuro e movimento no canvas seja interpretado como um pincel/brush.
+O modo de desenho livre é habilitado simplesmente definindo a propriedade ```isDrawingMode``` do canvas Fabric como ```true```. Isso imediatamente faz com que qualquer clique futuro e movimento no canvas seja interpretado como um pincel/brush.
 
-Você pode pintar no canvas quantas vezes você quiser, enquanto ```javascript isDrawingMode``` estiver ```javascript true```. Mas assim que você realiza um movimento, seguido por um evento "mouseup", Fabric dispara o evento "path:created" e transforma a forma recém desenhada em uma instância de fabric.Path!
+Você pode pintar no canvas quantas vezes você quiser, enquanto ```isDrawingMode``` estiver ```true```. Mas assim que você realiza um movimento, seguido por um evento "mouseup", Fabric dispara o evento "path:created" e transforma a forma recém desenhada em uma instância de fabric.Path!
 
-Se, em algum momento, você define ```javascript isDrawingMode``` de novo para ```javascript false```, você terá todos os objetos path criados ainda presentes no canvas. E uma vez que eles são os bons e velhos objetos ```javascript fabric.Path```, você pode modificá-los da maneira que você quiser - mover, rotacionar, redimensionar, etc.
+Se, em algum momento, você define ```isDrawingMode``` de novo para ```false```, você terá todos os objetos path criados ainda presentes no canvas. E uma vez que eles são os bons e velhos objetos ```fabric.Path```, você pode modificá-los da maneira que você quiser - mover, rotacionar, redimensionar, etc.
 
-Há também 2 propriedades disponíveis para customizar o desenho livre - ```javascript freeDrawingColor``` e ```javascript freeDrawingWidth```. Ambos estão disponíveis na instância canvas da Fabric. ```javascript freeDrawingColor``` pode ser qualquer valor regular de cor e representa a cor do brush. ```javascript freeDrawingWidth``` é um número regular de pixel e representa a espessura do brush. 
+Há também 2 propriedades disponíveis para customizar o desenho livre - ```freeDrawingColor``` e ```freeDrawingWidth```. Ambos estão disponíveis na instância canvas da Fabric. ```freeDrawingColor``` pode ser qualquer valor regular de cor e representa a cor do brush. ```freeDrawingWidth``` é um número regular de pixel e representa a espessura do brush. 
 
 <img src="https://raw.github.com/rodrigopandini/articles-fabric.js/master/assets/img/part_4/img01.png">
 
@@ -31,7 +31,7 @@ Uma das coisas fantáticas sobre a Fabric é o quão customizável ela é. Você pode 
 
 ### Trancando objetos
 
-Cada objeto no canvas pode ser trancado de alguma forma. "lockMovementX", "lockMovementY", "lockRotation", "lockScaling" são propriedades que trancam as ações correspondentes do objeto. Assim, definindo ```javascript object.lockMovementX``` para ```javascript true``` previne o objeto de ser movido horizontalmente. Você pode ainda mover o objeto verticalmente. Similarmente, ```javascript lockRotation``` previne a rotação e ```javascript lockScaling``` - o redimensionamento. Todos estes são acumulativos. Você pode combiná-los juntos da forma que quiser.
+Cada objeto no canvas pode ser trancado de alguma forma. "lockMovementX", "lockMovementY", "lockRotation", "lockScaling" são propriedades que trancam as ações correspondentes do objeto. Assim, definindo ```object.lockMovementX``` para ```true``` previne o objeto de ser movido horizontalmente. Você pode ainda mover o objeto verticalmente. Similarmente, ```lockRotation``` previne a rotação e ```lockScaling``` - o redimensionamento. Todos estes são acumulativos. Você pode combiná-los juntos da forma que quiser.
 
 ### Mudando as bordas e os cantos
 
@@ -68,7 +68,7 @@ object.set({
 
 ### Disabilitando a seleção
 
-Você pode desabilitar a seleção de objetos no canvas definindo a propriedade "selection" do canvas como ```javascript false```. Isso previne a seleção de absolutamente tudo exibido no canvas. Se você só precisa que certos objetos sejam não selecionáveis, você pode mudar a propriedade "selectable" dos objetos. Simplesmente defina-a como ```javascript false``` e o objeto perde sua interatividade.
+Você pode desabilitar a seleção de objetos no canvas definindo a propriedade "selection" do canvas como ```false```. Isso previne a seleção de absolutamente tudo exibido no canvas. Se você só precisa que certos objetos sejam não selecionáveis, você pode mudar a propriedade "selectable" dos objetos. Simplesmente defina-a como ```false``` e o objeto perde sua interatividade.
 
 ### Customizando a seleção
 
@@ -122,7 +122,7 @@ Vejamos esta imagem:
 
 ***Figura 8: Objeto e sua caixa de contorno***
 
-Por padrão, todos os objeto Fabric no canvas podem ser arrastados pela caixa de contorno. Entretando, se você quer um comportamento diferente - clicando/arrastando objetos somente pelo seu real conteúdo, você pode usar a propriedade "perPixelTargetFind" do objeto. Simplesmente defina como ```javascript true``` para ter o comportamento desejado.
+Por padrão, todos os objeto Fabric no canvas podem ser arrastados pela caixa de contorno. Entretando, se você quer um comportamento diferente - clicando/arrastando objetos somente pelo seu real conteúdo, você pode usar a propriedade "perPixelTargetFind" do objeto. Simplesmente defina como ```true``` para ter o comportamento desejado.
 
 ### Ponto de Rotação
 
@@ -134,13 +134,13 @@ Desda versão 1.0, Fabric usa uma UI alternativa por padrão - objetos podem não m
 
 ### Transformação de objeto
 
-Há um número de outras propriedades relacionadas a transformação disponíveis na Fabric desde a versão 1.0. Uma delas é a "uniScaleTransform". Ela é ```javascript false``` por padrão e pode ser usada para habilitar o redimensionamento não uniforme do objeto; em outras palavras, isso permite alterar as proporções do objeto quando arrastado pelos seus cantos.
+Há um número de outras propriedades relacionadas a transformação disponíveis na Fabric desde a versão 1.0. Uma delas é a "uniScaleTransform". Ela é ```false``` por padrão e pode ser usada para habilitar o redimensionamento não uniforme do objeto; em outras palavras, isso permite alterar as proporções do objeto quando arrastado pelos seus cantos.
 
 <img src="https://raw.github.com/rodrigopandini/articles-fabric.js/master/assets/img/part_4/img10.png">
 
 ***Figura 10: Transformação de um objeto***
 
-Também há a "centerTransform". ```javascript false``` por padrão, especifica o centro do objeto que devo ser usado como origem da transformação. Quando definido como ```javascript true```, ele difine o mesmo comportamente anterior a versão 1.0, onde o objeto é sempre redimensionado/rotacionado em relação ao seu centro. Desde a versão 1.0, a origem da tranformação é dinâmica, o que permite um controle mais fino quando redimensionar objetos.
+Também há a "centerTransform". ```false``` por padrão, especifica o centro do objeto que devo ser usado como origem da transformação. Quando definido como ```true```, ele difine o mesmo comportamente anterior a versão 1.0, onde o objeto é sempre redimensionado/rotacionado em relação ao seu centro. Desde a versão 1.0, a origem da tranformação é dinâmica, o que permite um controle mais fino quando redimensionar objetos.
 
 O último par de novas propriedades é "originX" e "originY". Definido como "center" por padrão, ele permite alterar a origem da transformação programaticamente. Quando você arrasta os cantos do objeto, é esta propriedade que se altera dinâmicamente sob os panos.
 
@@ -160,7 +160,7 @@ canvas.renderAll();
 
 ***Figura 11: Cor de background do canvas***
 
-Você pode ir ainda mais longe e definir uma imagem como background. Você vai precisar de usar o método ```javascript setBackgroundImage``` para isso, passando uma url e uma função callback opcional, chamada quando completar o carregamento da imagem.
+Você pode ir ainda mais longe e definir uma imagem como background. Você vai precisar de usar o método ```setBackgroundImage``` para isso, passando uma url e uma função callback opcional, chamada quando completar o carregamento da imagem.
 
 ```javascript
 canvas.add(new fabric.Circle({ radius: 30, fill: '#f55', top: 100, left: 100 }));
@@ -171,7 +171,7 @@ canvas.setBackgroundImage('../assets/pug.jpg', canvas.renderAll.bind(canvas));
 
 ***Figura 12: Imagem de background do canvas***
 
-Finalmente, você também pode definir uma imagem como para sobrepor o canvas, neste caso ela sempre irá aparecer sobre qualquer objeto renderizado no canvas. Simplemente use ```javascript setOverlayImage```, passando uma url e uma função de callback opcional chamada quando o carregamento da imagem estiver completo.
+Finalmente, você também pode definir uma imagem como para sobrepor o canvas, neste caso ela sempre irá aparecer sobre qualquer objeto renderizado no canvas. Simplemente use ```setOverlayImage```, passando uma url e uma função de callback opcional chamada quando o carregamento da imagem estiver completo.
 
 ```javascript
 canvas.add(new fabric.Circle({ radius: 30, fill: '#f55', top: 100, left: 100 }));
@@ -194,7 +194,7 @@ Uma vez que o Node está instalado, nós precisamos de instalar a biblioteca [node
 
 Uma vez que Fabric roda em cima do Node, ela vem como um pacote NPM.  Assim, o próximo passo é instalar o NPM. Você pode encontrar instruções de instalação no [repositório do github](https://github.com/isaacs/npm).
 
-O último passo é instalar o pacote [Fabric](https://npmjs.org/package/fabric), usando NPM. Isso é feito simplesmente rodando o comando ```javascript npm install fabric``` (ou ```javascript npm install -g fabric``` para instalar o pacote globalmente).
+O último passo é instalar o pacote [Fabric](https://npmjs.org/package/fabric), usando NPM. Isso é feito simplesmente rodando o comando ```npm install fabric``` (ou ```npm install -g fabric``` para instalar o pacote globalmente).
 
 Se você rodar o console agora, você deverá ter ambos node-canvas e Fabric disponíveis para uso:
 
@@ -227,7 +227,7 @@ stream.on('data', function(chunk) {
 });
 ```
 
-e então rodar ele com ```javascript node helloworld.js```. Abrindo a imagem helloworld.png temos isso:
+e então rodar ele com ```node helloworld.js```. Abrindo a imagem helloworld.png temos isso:
 
 <img src="https://raw.github.com/rodrigopandini/articles-fabric.js/master/assets/img/part_4/img14.png">
 
@@ -235,13 +235,13 @@ e então rodar ele com ```javascript node helloworld.js```. Abrindo a imagem hell
 
 Então, o que temos aqui? Vamos rever as partes importantes deste código.
 
-Primeiro, nós estamos incluindo a Fabric (```javascript fabric = require('fabric').fabric```). Em seguida, nós criamos o bom e velho canvas Fabric, usando o comando ```javascript fabric.createCanvasForNode()``` ao invés do usual new ```javascript fabric.Canvas()```. Este método recebe os parâmetros largura e altura e cria um canvas com estas dimensões (no caso, com 200x200x).
+Primeiro, nós estamos incluindo a Fabric (```fabric = require('fabric').fabric```). Em seguida, nós criamos o bom e velho canvas Fabric, usando o comando ```fabric.createCanvasForNode()``` ao invés do usual new ```fabric.Canvas()```. Este método recebe os parâmetros largura e altura e cria um canvas com estas dimensões (no caso, com 200x200x).
 
-Em seguida há a criação de um objeto (```javascript new fabric.Text()```) e adiçãos dele ao canvas (```javascript canvas.add(text)```).
+Em seguida há a criação de um objeto (```new fabric.Text()```) e adiçãos dele ao canvas (```canvas.add(text)```).
 
-Tudo isso é uma simples criação do canvas Fabric e renderização do texto nele. Agora, como criamos uma imagem de tudo o que esta renderizado no canvas? Usando o método ```javascript createPNGStream``` disponível diretamente da instância canvas. ```javascript createPNGStream``` retorna um [objeto stream](http://nodejs.org/api/stream.html) do Node e então pode-se colocar um arquivo de imagem usando ```javascript on('data')``` e escrevendo no stream correspondente um arquivo de imagem (```javascript fs.createWriteStream()```).
+Tudo isso é uma simples criação do canvas Fabric e renderização do texto nele. Agora, como criamos uma imagem de tudo o que esta renderizado no canvas? Usando o método ```createPNGStream``` disponível diretamente da instância canvas. ```createPNGStream``` retorna um [objeto stream](http://nodejs.org/api/stream.html) do Node e então pode-se colocar um arquivo de imagem usando ```on('data')``` e escrevendo no stream correspondente um arquivo de imagem (```fs.createWriteStream()```).
 
-```javascript fabric.createCanvasForNode``` e ```javascript fabric.Canvas#createPNGStream``` são muito mais do que somente 2 métodos específicos para Node. Tudo mais funciona da mesma forma - você pode ainda criar objetos da forma usual e então adicioná-los ao canvas, modificá-los, renderizá-los, etc. Vale a pena mencionar que quando você cria o canvas via ```javascript fabric.createCanvasForNode``` ele é extendido com a propriedade ```javascript nodeCanvas``` a qual é a referência a instância node-canvas original.
+```fabric.createCanvasForNode``` e ```fabric.Canvas#createPNGStream``` são muito mais do que somente 2 métodos específicos para Node. Tudo mais funciona da mesma forma - você pode ainda criar objetos da forma usual e então adicioná-los ao canvas, modificá-los, renderizá-los, etc. Vale a pena mencionar que quando você cria o canvas via ```fabric.createCanvasForNode``` ele é extendido com a propriedade ```nodeCanvas``` a qual é a referência a instância node-canvas original.
 
 ### Servidor Node e Fabric
 
