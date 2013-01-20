@@ -9,8 +9,6 @@ Nós cobrimos muitos tópicos nas séries anteriores; desde a manipulação básica de
 
 ### Desenho livre
 
-If there's anything <canvas> really shines at, it's that it has an excellent support for free drawing! Since canvas is simply a 2D bitmap — a paper to paint on — performing free drawing is very natural. And of course Fabric takes care of this for us.
-
 Se há uma coisa no ```javascript <canvas> ``` que realmente brilha é o excelente suporte a desenho livre! Uma vez que o canvas é simplesmente um bitmap 2D - um papel para se pintar - realizar desenho livre é muito natural. E claro, Fabric cuida disso para gente.
 
 O modo de desenho livre é habilitado simplesmente definindo a propriedade ```javascript isDrawingMode``` do canvas Fabric como ```javascript true```. Isso imediatamente faz com que qualquer clique futuro e movimento no canvas seja interpretado como um pincel/brush.
