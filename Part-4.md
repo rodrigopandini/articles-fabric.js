@@ -3,9 +3,9 @@ Introdução à Fabric.js: Parte 4
 
 **[Juriy Zaytsev](https://github.com/rodrigopandini/articles-fabric.js/blob/master/Part-1.md#sobre-o-autor) | January 18, 2012**
 
-**Tradução (pt_BR): [Rodrigo Pandini](http://twitter.com/rodrigopandini) | 19 Janeiro, 2013**
+**Tradução (pt_BR): [Rodrigo Pandini](http://twitter.com/rodrigopandini) | 20 Janeiro, 2013**
 
-Nós cobrimos muitos tópicos nas séries anteriores; desde a manipulação básica de objetos à animações, evento, filtros, grupos e subclasses. Mas ainda há algumas coisas muito interessantes e úteis a serem dicutidas!
+Nós cobrimos muitos tópicos nas séries anteriores; desde a manipulação básica de objetos à animações, eventos, filtros, grupos e subclasses. Mas ainda há algumas coisas muito interessantes e úteis a serem discutidas!
 
 ### Desenho livre
 
@@ -162,8 +162,6 @@ canvas.renderAll();
 
 ***Figura 11: Cor de background do canvas***
 
-You can go even further and assign an image as a background. You'll need to use setBackgroundImage method for that, passing url and an optiona completion callback.
-
 Você pode ir ainda mais longe e definir uma imagem como background. Você vai precisar de usar o método ```javascript setBackgroundImage``` para isso, passando uma url e uma função callback opcional, chamada quando completar o carregamento da imagem.
 
 ```javascript
@@ -174,8 +172,6 @@ canvas.setBackgroundImage('../assets/pug.jpg', canvas.renderAll.bind(canvas));
 <img src="https://raw.github.com/rodrigopandini/articles-fabric.js/master/assets/img/part_4/img12.png">
 
 ***Figura 12: Imagem de background do canvas***
-
-Finally, you can also set overlay image, in which case it will always appear on top of any objects rendered on canvas. Just use setOverlayImage, passing url and an optional completion callback.
 
 Finalmente, você também pode definir uma imagem como para sobrepor o canvas, neste caso ela sempre irá aparecer sobre qualquer objeto renderizado no canvas. Simplemente use ```javascript setOverlayImage```, passando uma url e uma função de callback opcional chamada quando o carregamento da imagem estiver completo.
 
@@ -233,7 +229,7 @@ stream.on('data', function(chunk) {
 });
 ```
 
-e entào rodar ele com ```javascript node helloworld.js```. Abrindo a imagem helloworld.png temos isso:
+e então rodar ele com ```javascript node helloworld.js```. Abrindo a imagem helloworld.png temos isso:
 
 <img src="https://raw.github.com/rodrigopandini/articles-fabric.js/master/assets/img/part_4/img14.png">
 
@@ -295,7 +291,6 @@ Codificando como URL, temos:
 %7B"objects"%3A%5B%7B"type"%3A"rect"%2C"left"%3A103.85%2C"top"%3A98.85%2C"width"%3A50%2C"height"%3A50%2C"fill"%3A"%239ae759"%2C"overlayFill"%3Anull%2C"stroke"%3Anull%2C"strokeWidth"%3A1%2C"strokeDashArray"%3Anull%2C"scaleX"%3A1.39%2C"scaleY"%3A1.39%2C"angle"%3A30%2C"flipX"%3Afalse%2C"flipY"%3Afalse%2C"opacity"%3A0.8%2C"selectable"%3Atrue%2C"hasControls"%3Atrue%2C"hasBorders"%3Atrue%2C"hasRotatingPoint"%3Afalse%2C"transparentCorners"%3Atrue%2C"perPixelTargetFind"%3Afalse%2C"rx"%3A0%2C"ry"%3A0%7D%5D%2C"background"%3A"rgba(0%2C%200%2C%200%2C%200)"%7D
 ```
 
-And pass to a server via a "data" query param. The immediate response, coming back with "image/png" Content-type, looks like this:
 E passando para o servidor via parâmetro "data". A resposta imediata, retornando com Content-type "image/png", se parece como isso:
 
 <img src="https://raw.github.com/rodrigopandini/articles-fabric.js/master/assets/img/part_4/img15.png">
